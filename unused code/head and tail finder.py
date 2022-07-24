@@ -56,29 +56,29 @@ while go:
     blank = ''
     if PDicWord != dicWord:
         #checking for inside words (will also catch tails / heads)
-        HeadTail = open('headsAndTails.txt','a')
+        HeadTail = open('forwardheadTail.txt','a')
         for i in PRevwords.values():
             head = ''
             tail = ''
             minLen = min(len(dicWord),len(i))
             if dicWord[:minLen] == i[:minLen] and minLen >= 3:
                 tail = (dicWord[minLen:])
-                head =(i[minLen:])
-                HeadTail.write(dicWord+ tab + tail + tab + head+ tab +i + '\n')
+                #head =(i[minLen:])
+                HeadTail.write(dicWord+ tab + ''.join(reversed(i)) + tab + tails+ '\n')
     PDicWord = dicWord
 
-    if PrevWord != revWord:
-        #checking for inside words (will also catch tails / heads)
-        HeadTail = open('headsAndTails.txt','a')
-        for i in PDicwords.values():
-            head = ''
-            tail = ''
-            minLen = min(len(i),len(revWord))
-            if i[:minLen] == revWord[:minLen] and minLen >= 3:
-                tail = (i[minLen:])
-                head =(revWord[minLen:])
-                HeadTail.write(i+ tab + tail + tab + head+ tab +revWord + '\n')
-    PrevWord = revWord
+    #if PrevWord != revWord:
+    #    #checking for inside words (will also catch tails / heads)
+    #    HeadTail = open('headsAndTails.txt','a')
+    #    for i in PDicwords.values():
+    #        head = ''
+    #        tail = ''
+    #        minLen = min(len(i),len(revWord))
+    #        if i[:minLen] == revWord[:minLen] and minLen >= 3:
+    #            tail = (i[minLen:])
+    #            head =(revWord[minLen:])
+    #            HeadTail.write(i+ tab + tail + tab + head+ tab +revWord + '\n')
+    #PrevWord = revWord
 
 
 
