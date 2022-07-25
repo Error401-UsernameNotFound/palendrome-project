@@ -27,17 +27,14 @@ class DataBace:
     def mergeDataProcesser(self,fileName:str,NewFileName:str):
         file = open(fileName,'r')
         fileLines = file.readlines()
+        f = open(NewFileName, 'w')
         for i in fileLines:
             i = i.replace('\n','')
             iList = i.split(';')
 
-            palendromeList = [iList[0],iList[4],''.join(reversed(iList[2])),''.join(reversed(iList[3]))]
-            if ''.join(palendromeList) == ''.join(reversed(palendromeList)):
-                txt = ', '.join(palendromeList) + '; '+ ' '.join(palendromeList)
-            else:
-                #orginised the other way
-                palendromeList = [iList[4],''.join(reversed(iList[0])),iList[2],''.join(reversed(iList[3]))]
-                txt = ', '.join(palendromeList) + '; '+ ' '.join(palendromeList)
+            #orginised the other way
+            palendromeList = [iList[3],''.join(reversed(iList[2])),iList[0],''.join(reversed(iList[4]))]
+            txt = ', '.join(palendromeList) + '; '+ ' '.join(palendromeList)
             nf = open(NewFileName, 'a')
             nf.write(txt+'\n')
 
@@ -57,19 +54,38 @@ class DataBace:
         #assuming the lists are already seperated into internal lists
         list1Row = 0
         list2Row = 0
+
+        list1Dict = {}
+        list2Dict = {}
+
+        Pword1 = ''
+        Pword2 = ''
         print('starting merge')
-        NewList = []
         go = True
+        f = open('mergetmp.txt', 'w')
         while go:
             #compare words in same was as head tail finder find matches
             word1 = list1[list1Row][0]
             word2 = list2[list2Row][0]
             row1 = list1[list1Row]
             row2 = list2[list2Row]
+            
             if word1 == word2:
-                print(word1,word2)
-                f = open('mergetmp.txt','a')
-                f.write(';'.join([row1[1],row1[2],''.join(reversed(row1[2])),row2[1],''.join(reversed(row2[2]))]) + '\n')
+                if word1 != Pword1 and len(word1) > 1:
+                    list1Dict.update({row1[1]:row1})
+                if word2 != Pword2 and len(word2) > 1:
+                    list2Dict.update({row2[1]:row2})
+            else:
+                for one in list1Dict.keys():
+                    for two in list2Dict.keys():
+                        w1 = list1Dict[one]
+                        w2 = list2Dict[two]
+                        print(w1[0],w2[0])
+                        f = open('mergetmp.txt','a')
+                        f.write(';'.join([w1[1],w1[2],''.join(reversed(w1[2])),w2[1],''.join(reversed(w2[2]))]) + '\n')
+                list1Dict.clear()
+                list2Dict.clear()
+
             if word1 > word2:
                 list2Row += 1
             elif word1 < word2:
