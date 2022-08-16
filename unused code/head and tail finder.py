@@ -21,7 +21,7 @@ go = True
 while go:
     dicWord = dicLines[dicPointer].replace('\n','')
     revWord = revLines[revPointer].replace('\n','')
-    print(dicWord,revWord)
+    
 
     #look through and update dictionary's
 
@@ -63,8 +63,10 @@ while go:
             minLen = min(len(dicWord),len(i))
             if dicWord[:minLen] == i[:minLen] and minLen >= 3:
                 tail = (dicWord[minLen:])
-                #head =(i[minLen:])
-                HeadTail.write(dicWord+ tab + ''.join(reversed(i)) + tab + tails+ '\n')
+                #head = (i[minLen:]) does not exsist
+                #if(''.join(reversed(i)) == i or ''.join(reversed(tail)) == tail): # if either of them are palendromes
+                HeadTail.write(dicWord+ tab + i + tab + tail+ '\n')
+                print(dicWord)
     PDicWord = dicWord
 
     #if PrevWord != revWord:
