@@ -16,7 +16,7 @@ for i in revTxt:
         a = a.removesuffix('\n')
         if len(a) > 3 and len(split[0]) >3 and len(split[1]):
             combined.append(split[0]+ tab + a + tab + split[1] + '\n')
-            combined.append(split[1]+ tab + a + tab + split[0] + '\n')
+            #combined.append(split[1]+ tab + a + tab + split[0] + '\n')
     nf.writelines(combined)
 
 #now we make one using heads and tails

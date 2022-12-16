@@ -17,15 +17,16 @@ for row in ogList:
     except:
         line[2] = line[2].replace('\n','')
         pass
-    if len(line) > 2:
-        newOg.append(line.copy())
-    #new line is for, rev , head ,rev head,rev for
-    try:
-        line.append(''.join(reversed(line[2]))) #joined reverced head
-    except:
-        pass
-    line.append(''.join(reversed(line[0]))) #joined reverced forward
-    newList.append(line)
+    if line[0] != line[1]:
+        if len(line) > 2:
+            newOg.append(line.copy())
+        #new line is for, rev , head ,rev head,rev for
+        try:
+            line.append(''.join(reversed(line[2]))) #joined reverced head
+        except:
+            pass
+        line.append(''.join(reversed(line[0]))) #joined reverced forward
+        newList.append(line)
 for i in list(newList):
     if len(i) == 3:
         newList.remove(i)

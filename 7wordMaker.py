@@ -15,7 +15,7 @@ for i in F4Word:
     if int(Fsplit1[0]) >= 1127729: #this number to get the most intrtsting one
         for a in T3Word:
             Tsplit1 = a.removesuffix('\n').split('; ')
-            if int(Tsplit1[0]) >= 1000000:
+            if int(Tsplit1[0]) >= 115640:
                 Fsplit2 = Fsplit1[1].split(' ')
                 combined.append(Fsplit2[0] + tab + Fsplit2[1] + tab + Tsplit1[1] + tab + Fsplit2[2] + tab + Fsplit2[3] + '\n')
     nf.writelines(combined)

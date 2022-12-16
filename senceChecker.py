@@ -1,6 +1,6 @@
 import csv
 
-ForWordFile = open('3word.txt','r')
+ForWordFile = open('tmore3s.txt','r')
 forWordList = ForWordFile.readlines()
 f = open('3wordSence.txt','w')
 wordPopularity = open('wordPopularity.csv','r')
@@ -9,7 +9,7 @@ wordDict = {rows[0]:rows[1] for rows in reader}
 
 for i in forWordList:
     i = i.replace('\n','')
-    split1 = i.split(';')
+    split1 = i.split(': ')[0].split(';')
     numbers = []
     minNum = 0
     for a in split1:

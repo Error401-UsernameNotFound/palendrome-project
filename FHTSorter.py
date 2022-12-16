@@ -57,10 +57,10 @@ for i in revtxt:
         if palhead and revhead: #both heads
             if revsplit[1] == ''.join(reversed(palsplit[1])):
                 #if they are opisites 
-                new3 = open('more3s.txt','a')
-                new3.write(''.join(revsplit) + t +''.join(palsplit) + t + revsplit[0] +'\n')
+                new3 = open('tmore3s.txt','a')
+                new3.write(''.join(revsplit) + t +''.join(palsplit) + t + ''.join(reversed(revsplit[0])) + ": 1"+'\n')
 
         elif not palhead and not revhead: #both tails
             if revsplit[0] == ''.join(reversed(palsplit[0])):
-                new3 = open('more3s.txt','a')
-                new3.write(revsplit[1] + t + ''.join(palsplit) +t+ ''.join(revsplit) + '\n')
+                new3 = open('tmore3s.txt','a')
+                new3.write(''.join(reversed(revsplit[1])) + t + ''.join(palsplit) +t+ ''.join(revsplit) + ": 2" +'\n')
